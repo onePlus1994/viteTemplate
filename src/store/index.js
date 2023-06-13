@@ -19,16 +19,16 @@ import { getDefaultData } from '@/network/request'
 // })
 
 export default class Store {
-  constructor(){
-    this.data={}
+  constructor() {
+    this.data = {}
   }
 
-  async getData(){
+  async getData() {
     await this.#xxx()
     return this.data
   }
 
-  async #xxx(){
+  async #xxx() {
     let res = await getDefaultData()
     this.data.asd = res
   }
