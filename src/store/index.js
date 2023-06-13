@@ -1,6 +1,5 @@
-import { createStore } from "vuex"
-import {getDefaultData} from '@/network/request'
 
+import { getDefaultData } from '@/network/request'
 
 // const store = createStore({
 //   state(){
@@ -26,10 +25,11 @@ export default class Store {
 
   async getData(){
     await this.#xxx()
+    return this.data
   }
 
   async #xxx(){
-    let res=await getDefaultData()
+    let res = await getDefaultData()
     this.data.asd = res
   }
 }

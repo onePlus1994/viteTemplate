@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const api=axios.create({
+export const api = axios.create({
     baseURL:'',
     timeout:5000
 })
@@ -17,5 +17,6 @@ api.interceptors.response.use(
 
 export const getDefaultData =()=>api({
     method:'get',
-    url:'./data/asd.json'
+    url:'@/public/data/asd.json'
+    // url:'./data/asd.json'
 })
