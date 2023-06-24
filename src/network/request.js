@@ -17,6 +17,10 @@ api.interceptors.response.use(
 
 export const getDefaultData = () => api({
     method: 'get',
-    url: '@/public/data/asd.json'
-    // url:'./data/asd.json'
+    url: './data/asd.json'
 })
+
+export const getMenuData = () => api({
+    method: 'get', 
+    url: './data/menu.json'
+}) 

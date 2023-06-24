@@ -1,0 +1,33 @@
+[
+    {
+        "name": "第一个",
+        "icon": "",
+        "children": [
+            {
+                "name": "第一个一",
+                "icon": "",
+                "route": "three"
+            },
+            {
+                "name": "第一个二",
+                "icon": "",
+                "children": [
+                    {
+                        "name": "第一个二一",
+                        "icon": "",
+                        "route": "three"
+                    },
+                    {
+                        "name": "第一个二二",
+                        "icon": ""
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "第二个",
+        "icon": "",
+        "route": "second"
+    }
+]

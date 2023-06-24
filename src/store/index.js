@@ -1,5 +1,5 @@
 
-import { getDefaultData } from '@/network/request'
+import { getDefaultData, getMenuData } from '@/network/request'
 
 // const store = createStore({
 //   state(){
@@ -18,18 +18,24 @@ import { getDefaultData } from '@/network/request'
 //   }
 // })
 
-export default class Store {
-  constructor() {
-    this.data = {}
+export default class store {
+  constructor() { 
+    this.data = {};
   }
 
   async getData() {
-    await this.#xxx()
+    await this.#xxx();
+    await this.#menu();
     return this.data
   }
 
   async #xxx() {
-    let res = await getDefaultData()
+    let res = await getDefaultData();
     this.data.asd = res
+  }
+
+  async #menu() {
+    let res = await getMenuData();
+    this.data.menu = res
   }
 }

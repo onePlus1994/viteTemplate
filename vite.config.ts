@@ -18,5 +18,15 @@ export default defineConfig({
       }
     ],
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
-  }
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: {
+          hack: `true; @import (reference) "${resolve("src/assets/css/common.less")}";`,
+        },
+        javascriptEnabled: true,
+      },
+    },
+  },
 })
