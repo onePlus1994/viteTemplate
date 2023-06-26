@@ -18,23 +18,23 @@ import Store from '@/store'
 import { ref } from "vue";
 
 let store = new Store();
-let result = ref() 
+let result = ref()
 
 const getDatas = async () => {
   let newData = await store.getData();
-  result.value = newData  
+  result.value = newData
 }
 
 getDatas()
 
 const ddd = (dd) => {
-  console.log(convertData(dd),'wwdw')
+  console.log(convertData(dd), 'wwdw')
 }
 </script>
 
 <style lang="less" scoped>
 .Aside {
   // width: 200px;
-  background-color: aqua;
+  // background-color: aqua;
 }
 </style>

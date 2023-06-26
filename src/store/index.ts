@@ -1,6 +1,5 @@
 
 import { getDefaultData, getMenuData } from '@/network/request'
-
 // const store = createStore({
 //   state(){
 //     return{
@@ -17,25 +16,25 @@ import { getDefaultData, getMenuData } from '@/network/request'
 //     // 获取状态的方法
 //   }
 // })
+var data = {
+  asd: {},
+  menu: {}
+}
 
 export default class store {
-  constructor() { 
-    this.data = {};
-  }
-
   async getData() {
     await this.#xxx();
     await this.#menu();
-    return this.data
+    return data
   }
 
   async #xxx() {
     let res = await getDefaultData();
-    this.data.asd = res
+    data.asd = res
   }
 
   async #menu() {
     let res = await getMenuData();
-    this.data.menu = res
+    data.menu = res
   }
 }

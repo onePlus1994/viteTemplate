@@ -1,33 +1,53 @@
 [
     {
-        "name": "第一个",
-        "icon": "",
+        "name": "Navigator",
+        "icon": "Clock",
+        "index": 1,
         "children": [
             {
-                "name": "第一个一",
-                "icon": "",
-                "route": "three"
+                "name": "Navigator one",
+                "url": "/testone",
+                "icon": "Setting"
             },
             {
-                "name": "第一个二",
-                "icon": "",
+                "name": "Navigator four",
+                "url": "/testfour",
+                "icon": "Setting"
+            }
+        ]
+    },
+    {
+        "name": "Navigator two",
+        "icon": "Message",
+        "index": 2,
+        "children": [
+            {
+                "name": "Navigator two two",
+                "url": "/testtwo",
+                "icon": "Setting",
                 "children": [
                     {
-                        "name": "第一个二一",
-                        "icon": "",
-                        "route": "three"
+                        "name": "Navigator one",
+                        "url": "/testones",
+                        "icon": "Setting"
                     },
                     {
-                        "name": "第一个二二",
-                        "icon": ""
+                        "name": "Navigator four",
+                        "url": "/testfours",
+                        "icon": "Setting"
                     }
                 ]
             }
         ]
     },
     {
-        "name": "第二个",
-        "icon": "",
-        "route": "second"
+        "name": "Navigator three",
+        "url": "/testthree",
+        "icon": "Message"
+    },
+    {
+        "name": "Navigator five",
+        "url": "/testfive",
+        "icon": "Message"
     }
 ]

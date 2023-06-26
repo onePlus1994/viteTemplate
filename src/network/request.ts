@@ -21,6 +21,6 @@ export const getDefaultData = () => api({
 })
 
 export const getMenuData = () => api({
-    method: 'get', 
+    method: 'get',
     url: './data/menu.json'
 }) 
