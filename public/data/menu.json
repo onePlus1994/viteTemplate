@@ -1,18 +1,24 @@
 [
     {
+        "title": "首页",
+        "icon": "Clock",
+        "code": "5",
+        "route": "/home"
+    },
+    {
         "title": "Navigator",
         "icon": "Clock",
         "code": "1",
         "children": [
             {
                 "title": "Navigator one",
-                "route": "/testone",
+                "route": "/testonerqwr12",
                 "code": "1-1",
                 "icon": "Setting"
             },
             {
                 "title": "Navigator four",
-                "route": "/testfour",
+                "route": "/testfourfewdwq",
                 "code": "1-2",
                 "icon": "Setting"
             }
@@ -31,13 +37,13 @@
                 "children": [
                     {
                         "title": "Navigator one",
-                        "route": "/testones",
+                        "route": "/testones12",
                         "code": "2-1-1",
                         "icon": "Setting"
                     },
                     {
                         "title": "Navigator four",
-                        "route": "/testfours",
+                        "route": "/testfour41241",
                         "code": "2-1-2",
                         "icon": "Setting"
                     }

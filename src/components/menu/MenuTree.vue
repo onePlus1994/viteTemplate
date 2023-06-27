@@ -7,7 +7,7 @@
           <el-icon>
             <Expand />
           </el-icon>
-          <span>{{ subMenu.title }}</span>
+          <span>{{ subMenu.title + "1" }}</span>
         </template>
         <!-- 重点：循环调用自己 -->
         <template v-for="(item, i) in subMenu.children" :key="item.code + i">
@@ -18,7 +18,7 @@
 
     <!-- 设置终止条件，如果没有子级，就不在调用自己 -->
     <template v-else>
-      <el-menu-item :index="subMenu.code">
+      <el-menu-item :index="subMenu.code" @click="clickBack(subMenu.route)">
         <template #title>
           <el-icon>
             <Expand />
@@ -40,5 +40,12 @@ const props = defineProps({
   }
 })
 const { subMenu } = toRefs(props)
+
+// const emits = defineEmits(["clickBack"])
+
+const clickBack = (res) => {
+
+  // emits('clickBack', res)
+}
 </script>
 <style scoped lang="less"></style>

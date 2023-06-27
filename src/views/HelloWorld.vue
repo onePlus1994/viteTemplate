@@ -4,29 +4,31 @@
     <el-header class="header">Header</el-header>
     <el-container>
       <el-aside class="Aside">
-        <menus :data="result" @nodeClick="ddd"></menus>
+        <menus :data="result.menu"></menus>
       </el-aside>
-      <el-main class="main">Main</el-main>
+      <el-main class="main">
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script setup lang="ts">
 import menus from '@/components/menu/index.vue'
-import { convertData } from '@/components/until/until.js'
+// import { convertData } from '@/components/until/until.js'
 import Store from '@/store'
 import { reactive, onMounted } from "vue";
 
 let store = new Store();
-let result: any = reactive([]);
+let result: any = reactive<{
+  menu: object[]
+}>({
+  menu: []
+});
 onMounted(async () => {
   let newData = await store.getData();
-  result = newData.menu
+  result.menu = newData.menu
 })
-
-const ddd = (dd) => {
-  console.log(convertData(dd), 'wwdw')
-}
 </script>
 
 <style lang="less" scoped>

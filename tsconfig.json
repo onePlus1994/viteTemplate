@@ -27,7 +27,10 @@
       "@/*": [
         "./src/*",
       ]
-    }
+    },
+    "lib": [
+      "DOM.Iterable" //新增的项
+    ]
   },
   "exclude": [
     "node_modules",
@@ -38,8 +41,8 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "src/store/index.js",
-    "src/store/index.js"
+    "src/store/index.ts",
+    "src/store/index.ts"
   ],
   "references": [
     {

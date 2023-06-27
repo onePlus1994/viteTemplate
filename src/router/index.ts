@@ -4,7 +4,10 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'home',
-        component: Layout
+        component: Layout,
+        children: [
+
+        ]
     }
 ]
 // 创建
