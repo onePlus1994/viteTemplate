@@ -1,7 +1,9 @@
 <template>
   <div class="bodyMenu">
     <el-menu>
-      <menu-item v-for="item in menuData" :key="item.path" :item="item" />
+      <template v-for="item in menuData">
+        <menu-item :subMenu="item" />
+      </template>
     </el-menu>
   </div>
 </template>
@@ -9,15 +11,14 @@
 <script setup lang="ts">
 import { convertData } from '@/components/until/until.js'
 import MenuItem from "./MenuTree.vue";
-import { watch, ref } from 'vue';
+import { watch, reactive, toRefs, computed } from 'vue';
 // 在接收时候也得注意，vue3 props接收必须规定数据类型，如果父元素数据类型出错，那么会报错
 const props = defineProps({ data: Object });
-let menuData = ref();
 
-watch(() => props.data, (newval) => {
-  menuData = convertData(newval).menu
-});
-
+const { data }: any = toRefs(props)
+const menuData: any = computed(() => {
+  return data.value
+})
 // const emit = defineEmits(["nodeClick"])
 
 // const nodeClick = (value) => {

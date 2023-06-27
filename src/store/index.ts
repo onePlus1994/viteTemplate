@@ -34,7 +34,8 @@ export default class store {
   }
 
   async #menu() {
-    let res = await getMenuData();
-    data.menu = res
+    await getMenuData().then(res => {
+      data.menu = res
+    });
   }
 }

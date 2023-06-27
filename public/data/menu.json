@@ -1,39 +1,44 @@
 [
     {
-        "name": "Navigator",
+        "title": "Navigator",
         "icon": "Clock",
-        "index": 1,
+        "code": "1",
         "children": [
             {
-                "name": "Navigator one",
-                "url": "/testone",
+                "title": "Navigator one",
+                "route": "/testone",
+                "code": "1-1",
                 "icon": "Setting"
             },
             {
-                "name": "Navigator four",
-                "url": "/testfour",
+                "title": "Navigator four",
+                "route": "/testfour",
+                "code": "1-2",
                 "icon": "Setting"
             }
         ]
     },
     {
-        "name": "Navigator two",
+        "title": "Navigator two",
         "icon": "Message",
-        "index": 2,
+        "code": "2",
         "children": [
             {
-                "name": "Navigator two two",
-                "url": "/testtwo",
+                "title": "Navigator two two",
+                "route": "/testtwo",
                 "icon": "Setting",
+                "code": "2-1",
                 "children": [
                     {
-                        "name": "Navigator one",
-                        "url": "/testones",
+                        "title": "Navigator one",
+                        "route": "/testones",
+                        "code": "2-1-1",
                         "icon": "Setting"
                     },
                     {
-                        "name": "Navigator four",
-                        "url": "/testfours",
+                        "title": "Navigator four",
+                        "route": "/testfours",
+                        "code": "2-1-2",
                         "icon": "Setting"
                     }
                 ]
@@ -41,13 +46,15 @@
         ]
     },
     {
-        "name": "Navigator three",
-        "url": "/testthree",
+        "title": "Navigator three",
+        "route": "/testthree",
+        "code": "3",
         "icon": "Message"
     },
     {
-        "name": "Navigator five",
-        "url": "/testfive",
+        "title": "Navigator five",
+        "code": "4",
+        "route": "/testfive",
         "icon": "Message"
     }
 ]

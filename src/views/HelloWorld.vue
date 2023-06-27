@@ -15,17 +15,14 @@
 import menus from '@/components/menu/index.vue'
 import { convertData } from '@/components/until/until.js'
 import Store from '@/store'
-import { ref } from "vue";
+import { reactive, onMounted } from "vue";
 
 let store = new Store();
-let result = ref()
-
-const getDatas = async () => {
+let result: any = reactive([]);
+onMounted(async () => {
   let newData = await store.getData();
-  result.value = newData
-}
-
-getDatas()
+  result = newData.menu
+})
 
 const ddd = (dd) => {
   console.log(convertData(dd), 'wwdw')

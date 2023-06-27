@@ -1,31 +1,44 @@
 <template>
-  <el-menu-item v-if="!item.children" :index="item.path">
-    <el-icon>
-      <component :is="item.icon"></component>
-    </el-icon>
-    <span>{{ item.name }}</span>
-  </el-menu-item>
-
-  <el-sub-menu v-else :index="item.path">
-    <template #title>
-      <el-icon>
-        <component :is="item.icon"></component>
-      </el-icon>
-      <span>{{ item.name }}</span>
+  <div>
+    <!-- 设置判断条件，如果存在子级且有值 -->
+    <template v-if="subMenu.children && '0' in subMenu.children">
+      <el-sub-menu :index="subMenu.code">
+        <template #title>
+          <el-icon>
+            <Expand />
+          </el-icon>
+          <span>{{ subMenu.title }}</span>
+        </template>
+        <!-- 重点：循环调用自己 -->
+        <template v-for="(item, i) in subMenu.children" :key="item.code + i">
+          <MenuTree :subMenu="item"></MenuTree>
+        </template>
+      </el-sub-menu>
     </template>
-    <!-- 组件自调 -->
-    <s-menu v-for="ele in item.children" :index="ele.path" :key="ele" :item="ele" />
-  </el-sub-menu>
+
+    <!-- 设置终止条件，如果没有子级，就不在调用自己 -->
+    <template v-else>
+      <el-menu-item :index="subMenu.code">
+        <template #title>
+          <el-icon>
+            <Expand />
+          </el-icon>
+          <span>{{ subMenu.title }}</span>
+        </template>
+      </el-menu-item>
+    </template>
+  </div>
 </template>
+
 <script setup>
-defineOptions({
-  name: "SMenu",//组件命名
-});
-defineProps(["item"]);//父组件向子组件传递的数据
+import MenuTree from './MenuTree.vue'
+import { toRefs } from 'vue'
+const props = defineProps({
+  subMenu: {
+    type: Object,
+    default: () => { }
+  }
+})
+const { subMenu } = toRefs(props)
 </script>
-<style scoped>
-.icon {
-  width: 20px;
-  height: 20px;
-}
-</style>
+<style scoped lang="less"></style>
