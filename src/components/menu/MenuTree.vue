@@ -5,7 +5,7 @@
       <el-sub-menu :index="subMenu.code">
         <template #title>
           <el-icon>
-            <Expand />
+            <component :is="subMenu.icon" />
           </el-icon>
           <span>{{ subMenu.title + "1" }}</span>
         </template>
@@ -18,10 +18,10 @@
 
     <!-- 设置终止条件，如果没有子级，就不在调用自己 -->
     <template v-else>
-      <el-menu-item :index="subMenu.code" @click="clickBack(subMenu.route)">
+      <el-menu-item :index="subMenu.route" @click="clickBack(subMenu.route)">
         <template #title>
           <el-icon>
-            <Expand />
+            <component :is="subMenu.icon" />
           </el-icon>
           <span>{{ subMenu.title }}</span>
         </template>

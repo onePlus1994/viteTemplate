@@ -2,23 +2,18 @@
     {
         "title": "首页",
         "icon": "Clock",
-        "code": "5",
-        "route": "/home"
-    },
-    {
-        "title": "Navigator",
-        "icon": "Clock",
         "code": "1",
+        "route": "/home",
         "children": [
             {
-                "title": "Navigator one",
-                "route": "/testonerqwr12",
+                "title": "二级页面1",
+                "route": "/secondPage1",
                 "code": "1-1",
                 "icon": "Setting"
             },
             {
-                "title": "Navigator four",
-                "route": "/testfourfewdwq",
+                "title": "二级页面2",
+                "route": "/secondPage2",
                 "code": "1-2",
                 "icon": "Setting"
             }

@@ -25,6 +25,7 @@ let result: any = reactive<{
 }>({
   menu: []
 });
+
 onMounted(async () => {
   let newData = await store.getData();
   result.menu = newData.menu
