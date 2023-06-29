@@ -9,6 +9,7 @@
         <menus :data="result.menu"></menus>
       </el-aside>
       <el-main class="main">
+        <interfaceCrumbs :data="result.menu"></interfaceCrumbs>
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -18,6 +19,7 @@
 <script setup lang="ts">
 import menus from '@/components/menu/index.vue'
 import headerInformation from '@/components/headerInformation/index.vue'
+import interfaceCrumbs from '@/components/interfaceCrumbs/index.vue'
 import Store from '@/store'
 import { reactive, onMounted } from "vue";
 

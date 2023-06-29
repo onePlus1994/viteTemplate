@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import Layout from '@/views/HelloWorld.vue'
+import Layout from '@/views/home.vue'
 import secondPage1 from '@/views/secondaryPage/secondaryExample.vue'
 import secondPage2 from '@/views/secondaryPage/secondExample2.vue'
 import errorPage from '@/views/errorPage.vue'
