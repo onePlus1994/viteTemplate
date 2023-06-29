@@ -31,6 +31,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "/:pathMatch(.*)",
         component: errorPage,
     },
+    {
+        // 找不到路由重定向到404页面
+        path: "/errorPage",
+        component: errorPage,
+    },
 ]
 // 创建 router的hash模式,history模式有问题,无法显示url路径
 const router = createRouter({
