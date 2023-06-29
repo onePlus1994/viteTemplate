@@ -28,7 +28,7 @@ const route = useRoute();
   padding: 0 10px;
 }
 
-/deep/ .el-menu {
+::v-deep(.el-menu) {
   border-right: none;
 }
 </style> 

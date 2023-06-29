@@ -6,7 +6,7 @@
         <el-icon>
           <component :is="subMenu.icon" />
         </el-icon>
-        <span>{{ subMenu.title + "1" }}</span>
+        <span>{{ subMenu.title }}</span>
       </template>
       <!-- 重点：循环调用自己 -->
       <template v-for="(item, i) in subMenu.children" :key="item.code + i">

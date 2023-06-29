@@ -42,4 +42,8 @@ onMounted(async () => {
   // background-color: aqua;
   border-right: 1px solid;
 }
+
+.main {
+  padding: 0 20px 20px 20px;
+}
 </style>
