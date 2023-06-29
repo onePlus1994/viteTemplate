@@ -1,7 +1,9 @@
 
 <template>
   <el-container>
-    <el-header class="header">Header</el-header>
+    <el-header class="header">
+      <headerInformation></headerInformation>
+    </el-header>
     <el-container>
       <el-aside class="Aside">
         <menus :data="result.menu"></menus>
@@ -15,7 +17,7 @@
 
 <script setup lang="ts">
 import menus from '@/components/menu/index.vue'
-// import { convertData } from '@/components/until/until.js'
+import headerInformation from '@/components/headerInformation/index.vue'
 import Store from '@/store'
 import { reactive, onMounted } from "vue";
 
@@ -36,5 +38,6 @@ onMounted(async () => {
 .Aside {
   // width: 200px;
   // background-color: aqua;
+  border-right: 1px solid;
 }
 </style>

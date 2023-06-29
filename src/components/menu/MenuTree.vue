@@ -1,32 +1,28 @@
 <template>
   <div>
     <!-- 设置判断条件，如果存在子级且有值 -->
-    <template v-if="subMenu.children && '0' in subMenu.children">
-      <el-sub-menu :index="subMenu.code">
-        <template #title>
-          <el-icon>
-            <component :is="subMenu.icon" />
-          </el-icon>
-          <span>{{ subMenu.title + "1" }}</span>
-        </template>
-        <!-- 重点：循环调用自己 -->
-        <template v-for="(item, i) in subMenu.children" :key="item.code + i">
-          <MenuTree :subMenu="item"></MenuTree>
-        </template>
-      </el-sub-menu>
-    </template>
+    <el-sub-menu v-if="subMenu.children && '0' in subMenu.children" :index="subMenu.code">
+      <template #title>
+        <el-icon>
+          <component :is="subMenu.icon" />
+        </el-icon>
+        <span>{{ subMenu.title + "1" }}</span>
+      </template>
+      <!-- 重点：循环调用自己 -->
+      <template v-for="(item, i) in subMenu.children" :key="item.code + i">
+        <MenuTree :subMenu="item"></MenuTree>
+      </template>
+    </el-sub-menu>
 
     <!-- 设置终止条件，如果没有子级，就不在调用自己 -->
-    <template v-else>
-      <el-menu-item :index="subMenu.route" @click="clickBack(subMenu.route)">
-        <template #title>
-          <el-icon>
-            <component :is="subMenu.icon" />
-          </el-icon>
-          <span>{{ subMenu.title }}</span>
-        </template>
-      </el-menu-item>
-    </template>
+    <el-menu-item v-else :index="subMenu.route" @click="clickBack(subMenu.route)">
+      <template #title>
+        <el-icon>
+          <component :is="subMenu.icon" />
+        </el-icon>
+        <span>{{ subMenu.title }}</span>
+      </template>
+    </el-menu-item>
   </div>
 </template>
 
@@ -44,7 +40,6 @@ const { subMenu } = toRefs(props)
 // const emits = defineEmits(["clickBack"])
 
 const clickBack = (res) => {
-
   // emits('clickBack', res)
 }
 </script>

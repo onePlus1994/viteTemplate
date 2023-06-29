@@ -7,13 +7,13 @@
         "children": [
             {
                 "title": "二级页面1",
-                "route": "/secondPage1",
+                "route": "/home/secondPage1",
                 "code": "1-1",
                 "icon": "Setting"
             },
             {
                 "title": "二级页面2",
-                "route": "/secondPage2",
+                "route": "/home/secondPage2",
                 "code": "1-2",
                 "icon": "Setting"
             }

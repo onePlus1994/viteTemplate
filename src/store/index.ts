@@ -29,8 +29,9 @@ export default class store {
   }
 
   async #xxx() {
-    let res = await getDefaultData();
-    data.asd = res
+    await getDefaultData().then(res => {
+      data.asd = res
+    });
   }
 
   async #menu() {
