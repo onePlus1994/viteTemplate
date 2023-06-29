@@ -1,7 +1,9 @@
 <template>
-    <div>
+    <div class="crumbsSty">
         <el-breadcrumb :separator-icon="ArrowRight">
-            <el-breadcrumb-item v-for="(item, index) in objAry.listAry" :key="index">{{ item.title }}</el-breadcrumb-item>
+            <el-breadcrumb-item v-for="(item, index) in objAry.listAry" :key="index">
+                <span class="titleSty">{{ item.title }}</span>
+            </el-breadcrumb-item>
         </el-breadcrumb>
     </div>
 </template>
@@ -52,8 +54,21 @@ watch(() => router.currentRoute.value, (toPath) => {
 </script>
   
 <style lang="less" scoped>
+.crumbsSty {
+    background-color: #409EFF;
+    padding: 0 20px;
+}
+
 ::v-deep(.el-breadcrumb span, i) {
     line-height: 56px;
+}
+
+::v-deep(.el-breadcrumb__separator) {
+    color: #ffffff;
+}
+
+.titleSty {
+    color: #ffffff;
 }
 </style> 
   
