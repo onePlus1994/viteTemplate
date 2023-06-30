@@ -38,7 +38,10 @@ const getPathById = (tree: any, id: any, path: any) => {
             return tempPath
         }
         if (tree[i].children) {
-            return getPathById(tree[i].children, id, tempPath)
+            let a = getPathById(tree[i].children, id, tempPath)
+            if (a) {
+                return a
+            }
         }
     }
 }

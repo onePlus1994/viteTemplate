@@ -6,10 +6,18 @@
         "route": "/home",
         "children": [
             {
-                "title": "二级页面1",
-                "route": "/home/secondPage1",
+                "title": "二级menu",
+                "route": "/homess/secondPage1da",
                 "code": "1-1",
-                "icon": "Setting"
+                "icon": "Setting",
+                "children": [
+                    {
+                        "title": "二级页面1",
+                        "route": "/home/secondPage1",
+                        "code": "1-1",
+                        "icon": "Setting"
+                    }
+                ]
             },
             {
                 "title": "二级页面2",
