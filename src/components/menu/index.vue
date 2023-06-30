@@ -32,13 +32,13 @@ const routeData = {
 const routerPush0 = (array: any) => {
   let data = convertData(array);
   if (data[0].children && data[0].children.length > 0) {
+    if (convertData(routeData.ary).indexOf(data[0].route) < 0) {
+      routeData.ary.push(data[0].route)
+    }
     routerPush0(data[0].children)
   } else {
-    console.log(data[0])
-    if (convertData(routeData.ary).indexOf(data[0].route) >= 0) {
+    if (convertData(routeData.ary).indexOf(route.path) >= 0) {
       router.push(data[0].route)
-    } else {
-      routeData.ary.push(data[0].route)
     }
   }
 }
