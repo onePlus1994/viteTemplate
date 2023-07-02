@@ -5,13 +5,19 @@
             <div class="title">vite模板登录界面 <br /> 2个账号,密码和账号相同admin cesi</div>
             <el-row>
                 <el-col :span="24">
-                    <el-input v-model="account" placeholder="账号" :prefix-icon="Stamp" />
-                </el-col>
-                <el-col :span="24">
-                    <el-input v-model="password" type="password" placeholder="密码" :prefix-icon="Key" />
-                </el-col>
-                <el-col :span="24" class="logonSty">
-                    <el-button type="primary">登录</el-button>
+                    <el-form :model="form" ref="ruleFormRef" :rules="rules">
+                        <el-form-item prop="account">
+                            <el-input v-model.trim="form.account" placeholder="账号" :prefix-icon="Stamp"
+                                onkeyup="value=value.replace(/[^\x00-\xff]/g, '')" />
+                        </el-form-item>
+                        <el-form-item prop="password">
+                            <el-input v-model.trim="form.password" type="password" placeholder="密码" :prefix-icon="Key"
+                                onkeyup="value=value.replace(/[^\x00-\xff]/g, '')" />
+                        </el-form-item>
+                        <el-form-item class="logonSty">
+                            <el-button type="primary" @click="logon(ruleFormRef)">登录</el-button>
+                        </el-form-item>
+                    </el-form>
                 </el-col>
             </el-row>
         </div>
@@ -20,9 +26,60 @@
   
 <script setup lang="ts">
 import { Stamp, Key } from '@element-plus/icons-vue'
-import { ref } from "vue";
-const account = ref('')
-const password = ref('')
+import type { FormInstance, FormRules } from 'element-plus'
+import { ElMessage } from 'element-plus'
+import { reactive, ref } from "vue";
+
+const ruleFormRef = ref<InstanceType<typeof FormInstance>>()
+const regex = /^[a-zA-z]\w{3,15}$/
+const form: any = reactive({
+    account: "",
+    password: ""
+})
+
+const validateAccount = (rule: any, value: any, callback: any) => {
+    if (value === '') {
+        callback(new Error('Please enter an account'))
+    } else {
+        if (value.length < 3 || value.length > 15) {
+            callback(new Error('Length should be 4 to 15'))
+        } else if (regex.test(value)) {
+            callback()
+        } else {
+            callback(new Error('Start with letter'))
+        }
+    }
+}
+
+const validatePassword = (rule: any, value: any, callback: any) => {
+    if (value === '') {
+        callback(new Error('Please enter an account'))
+    } else {
+        if (value.length < 3 || value.length > 15) {
+            callback(new Error('Length should be 4 to 15'))
+        } else if (regex.test(value)) {
+            callback()
+        } else {
+            callback(new Error('Start with letter'))
+        }
+    }
+}
+
+const rules = reactive<InstanceType<typeof FormRules>>({
+    account: [{ validator: validateAccount, trigger: 'blur' },],
+    password: [{ validator: validatePassword, trigger: 'blur' },],
+})
+
+const logon = async (formEl: any) => {
+    if (!formEl) return
+    await formEl.validate((valid, fields) => {
+        if (valid) {
+            console.log(form)
+        } else {
+            ElMessage({ message: 'error submit!', type: 'warning', })
+        }
+    })
+}
 </script>
   
 <style lang="less" scoped>
@@ -50,19 +107,14 @@ const password = ref('')
     transform: translate(-50%, -50%);
 }
 
-::v-deep(.el-col) {
-    margin-bottom: 10px;
-}
-
 .title {
     font-size: 18px;
     text-align: center;
     margin-bottom: 20px;
 }
 
-.logonSty {
-    text-align: center;
-    margin-top: 20px;
+::v-deep(.logonSty .el-form-item__content) {
+    justify-content: center;
 
     button {
         width: 150px;
