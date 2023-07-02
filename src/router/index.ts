@@ -3,10 +3,11 @@ import Layout from '@/views/home.vue'
 import secondPage1 from '@/views/secondaryPage/secondaryExample.vue'
 import secondPage2 from '@/views/secondaryPage/secondExample2.vue'
 import errorPage from '@/views/errorPage.vue'
+import login from '@/views/login.vue'
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        redirect: '/home'
+        redirect: '/login'
     },
     {
         path: '/home',
@@ -24,6 +25,11 @@ const routes: Array<RouteRecordRaw> = [
                 component: secondPage2
             }
         ]
+    },
+    {
+        // 登录页面
+        path: "/login",
+        component: login,
     },
     {
         // 找不到路由重定向到404页面
