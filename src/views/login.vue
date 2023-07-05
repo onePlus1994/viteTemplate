@@ -28,11 +28,14 @@
 import { Stamp, Key } from '@element-plus/icons-vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
+import request from '@/store/request'
 import { reactive, ref } from "vue";
 
+let requestAjax = new request();
 const ruleFormRef = ref<InstanceType<typeof FormInstance>>()
 const regex = /^[a-zA-z]\w{3,15}$/
 const form: any = reactive({
+    isLogOn: false,
     account: "",
     password: ""
 })
@@ -71,14 +74,26 @@ const rules = reactive<InstanceType<typeof FormRules>>({
 })
 
 const logon = async (formEl: any) => {
-    if (!formEl) return
-    await formEl.validate((valid, fields) => {
+    if (!formEl && !form.isLogOn) return
+    await formEl.validate((valid) => {
         if (valid) {
-            console.log(form)
-        } else {
-            ElMessage({ message: 'error submit!', type: 'warning', })
+            ajaxPdw(form)
         }
     })
+}
+
+const ajaxPdw = async (value: any) => {
+    let newData = await requestAjax.getData('login');
+    newData.login.forEach(v => {
+        if (v.account === value.account && v.password === value.password) {
+            form.isLogOn = true
+        }
+    });
+    if (form.isLogOn) {
+        ElMessage({ message: 'Login succeeded', type: 'success', })
+    } else {
+        ElMessage({ message: 'Login failed', type: 'warning', })
+    }
 }
 </script>
   
