@@ -2,7 +2,7 @@
 import { getLoginData, getMenuData } from '@/network/request'
 var data: any = {}
 
-export default class store {
+export default class request {
     async getData(str: String) {
         if (str === 'login') {
             await this.#login();
