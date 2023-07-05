@@ -13,6 +13,19 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }
 
+// router守卫
+router.beforeEach(({ meta, path }, from, next) => {
+    console.log(meta, path, from)
+    let { auth = true } = meta //该router是否需要登录
+    let user = JSON.parse(sessionStorage.getItem("user")) || {}
+    let isLogin = Boolean(user.auth); // true用户已经登录，false用户未登录
+    if (auth && !isLogin && path !== '/login') {
+        return next({ path: '/login' })
+    } else {
+        next()
+    }
+})
+
 app.config.globalProperties.eventBus = mitt()
 app.use(router)
 app.use(store)

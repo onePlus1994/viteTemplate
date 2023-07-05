@@ -30,7 +30,9 @@ import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
 import request from '@/store/request'
 import { reactive, ref } from "vue";
+import { useRouter } from 'vue-router'
 
+const router = useRouter();
 let requestAjax = new request();
 const ruleFormRef = ref<InstanceType<typeof FormInstance>>()
 const regex = /^[a-zA-z]\w{3,15}$/
@@ -40,7 +42,7 @@ const form: any = reactive({
     password: ""
 })
 
-const validateAccount = (rule: any, value: any, callback: any) => {
+const validateAccount = (_rule: any, value: any, callback: any) => {
     if (value === '') {
         callback(new Error('Please enter an account'))
     } else {
@@ -54,7 +56,7 @@ const validateAccount = (rule: any, value: any, callback: any) => {
     }
 }
 
-const validatePassword = (rule: any, value: any, callback: any) => {
+const validatePassword = (_rule: any, value: any, callback: any) => {
     if (value === '') {
         callback(new Error('Please enter an account'))
     } else {
@@ -75,7 +77,7 @@ const rules = reactive<InstanceType<typeof FormRules>>({
 
 const logon = async (formEl: any) => {
     if (!formEl && !form.isLogOn) return
-    await formEl.validate((valid) => {
+    await formEl.validate((valid: any) => {
         if (valid) {
             ajaxPdw(form)
         }
@@ -84,9 +86,10 @@ const logon = async (formEl: any) => {
 
 const ajaxPdw = async (value: any) => {
     let newData = await requestAjax.getData('login');
-    newData.login.forEach(v => {
+    newData.login.forEach((v: any) => {
         if (v.account === value.account && v.password === value.password) {
             form.isLogOn = true
+            router.push('/')
         }
     });
     if (form.isLogOn) {
