@@ -41,7 +41,7 @@ const validateAccount = (rule: any, value: any, callback: any) => {
     if (value === '') {
         callback(new Error('Please enter an account'))
     } else {
-        if (value.length < 3 || value.length > 15) {
+        if (value.length < 4 || value.length > 15) {
             callback(new Error('Length should be 4 to 15'))
         } else if (regex.test(value)) {
             callback()
@@ -55,7 +55,7 @@ const validatePassword = (rule: any, value: any, callback: any) => {
     if (value === '') {
         callback(new Error('Please enter an account'))
     } else {
-        if (value.length < 3 || value.length > 15) {
+        if (value.length < 4 || value.length > 15) {
             callback(new Error('Length should be 4 to 15'))
         } else if (regex.test(value)) {
             callback()

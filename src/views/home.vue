@@ -20,10 +20,10 @@
 import menus from '@/components/menu/index.vue'
 import headerInformation from '@/components/headerInformation/index.vue'
 import interfaceCrumbs from '@/components/interfaceCrumbs/index.vue'
-import Store from '@/store'
+import request from '@/store/request'
 import { reactive, onMounted } from "vue";
 
-let store = new Store();
+let store = new request();
 let result: any = reactive<{
   menu: object[]
 }>({
@@ -31,7 +31,7 @@ let result: any = reactive<{
 });
 
 onMounted(async () => {
-  let newData = await store.getData();
+  let newData = await store.getData('menu');
   result.menu = newData.menu
 })
 </script>

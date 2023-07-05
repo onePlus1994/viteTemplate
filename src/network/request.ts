@@ -15,9 +15,9 @@ api.interceptors.response.use(
     (err) => console.log(err)
 )
 
-export const getDefaultData = () => api({
+export const getLoginData = () => api({
     method: 'get',
-    url: './data/asd.json'
+    url: './data/login.json'
 })
 
 export const getMenuData = () => api({
