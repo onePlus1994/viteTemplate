@@ -31,13 +31,14 @@ import { ElMessage } from 'element-plus'
 import request from '@/store/request'
 import { reactive, ref } from "vue";
 import { useRouter } from 'vue-router'
+import { encode, decode } from '@/components/until/until.ts'
 
 const router = useRouter();
 let requestAjax = new request();
 const ruleFormRef = ref<InstanceType<typeof FormInstance>>()
 const regex = /^[a-zA-z]\w{3,15}$/
 const form: any = reactive({
-    isLogOn: false,
+    auth: false,
     account: "",
     password: ""
 })
@@ -88,11 +89,14 @@ const ajaxPdw = async (value: any) => {
     let newData = await requestAjax.getData('login');
     newData.login.forEach((v: any) => {
         if (v.account === value.account && v.password === value.password) {
-            form.isLogOn = true
+            let obj = { ...form }
+            obj.auth = true
+            obj.password = encode(obj.password);
+            // sessionStorage.setItem("user", JSON.stringify(form))
             router.push('/')
         }
     });
-    if (form.isLogOn) {
+    if (form.auth) {
         ElMessage({ message: 'Login succeeded', type: 'success', })
     } else {
         ElMessage({ message: 'Login failed', type: 'warning', })
