@@ -14,6 +14,9 @@
                             <el-input v-model.trim="form.password" type="password" placeholder="密码" :prefix-icon="Key"
                                 onkeyup="value=value.replace(/[^\x00-\xff]/g, '')" />
                         </el-form-item>
+                        <el-form-item>
+                            <el-checkbox v-model="form.isRecord" label="记住用户名密码" />
+                        </el-form-item>
                         <el-form-item class="logonSty">
                             <el-button type="primary" @click="logon(ruleFormRef)">登录</el-button>
                         </el-form-item>
@@ -29,7 +32,7 @@ import { Stamp, Key } from '@element-plus/icons-vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
 import request from '@/store/request'
-import { reactive, ref } from "vue";
+import { reactive, ref, onMounted } from "vue";
 import { useRouter } from 'vue-router'
 import { encode, decode } from '@/components/until/until.ts'
 
@@ -40,7 +43,8 @@ const regex = /^[a-zA-z]\w{3,15}$/
 const form: any = reactive({
     auth: false,
     account: "",
-    password: ""
+    password: "",
+    isRecord: false
 })
 
 const validateAccount = (_rule: any, value: any, callback: any) => {
@@ -92,7 +96,7 @@ const ajaxPdw = async (value: any) => {
             let obj = { ...form }
             obj.auth = true
             obj.password = encode(obj.password);
-            // sessionStorage.setItem("user", JSON.stringify(form))
+            sessionStorage.setItem("user", JSON.stringify(obj))
             router.push('/')
         }
     });
@@ -102,6 +106,15 @@ const ajaxPdw = async (value: any) => {
         ElMessage({ message: 'Login failed', type: 'warning', })
     }
 }
+
+onMounted(() => {
+    let initUser = JSON.parse(sessionStorage.getItem("user"))
+    if (initUser?.isRecord) {
+        for (const key in form) {
+            key === 'password' ? form[key] = decode(initUser[key]) : form[key] = initUser[key]
+        }
+    }
+})
 </script>
   
 <style lang="less" scoped>
