@@ -91,16 +91,18 @@ const logon = async (formEl: any) => {
 
 const ajaxPdw = async (value: any) => {
     let newData = await requestAjax.getData('login');
+    let authFlag = false
     newData.login.forEach((v: any) => {
         if (v.account === value.account && v.password === value.password) {
             let obj = { ...form }
+            authFlag = true
             obj.auth = true
             obj.password = encode(obj.password);
-            sessionStorage.setItem("user", JSON.stringify(obj))
+            window.sessionStorage.setItem("user", JSON.stringify(obj))
             router.push('/')
         }
     });
-    if (form.auth) {
+    if (authFlag) {
         ElMessage({ message: 'Login succeeded', type: 'success', })
     } else {
         ElMessage({ message: 'Login failed', type: 'warning', })
@@ -108,7 +110,7 @@ const ajaxPdw = async (value: any) => {
 }
 
 onMounted(() => {
-    let initUser = JSON.parse(sessionStorage.getItem("user"))
+    let initUser = JSON.parse(window.sessionStorage.getItem("user"))
     if (initUser?.isRecord) {
         for (const key in form) {
             key === 'password' ? form[key] = decode(initUser[key]) : form[key] = initUser[key]
