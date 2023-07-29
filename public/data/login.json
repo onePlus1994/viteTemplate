@@ -1,10 +1,16 @@
 [
     {
         "account": "admin",
-        "password": "admin"
+        "password": "admin",
+        "power": [
+            "all"
+        ]
     },
     {
         "account": "cesi",
-        "password": "cesi"
+        "password": "cesi",
+        "power": [
+            "setting"
+        ]
     }
 ]
