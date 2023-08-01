@@ -9,7 +9,8 @@
         <menus :data="result.menu"></menus>
       </el-aside>
       <el-main class="main">
-        <interfaceCrumbs :data="result.menu"></interfaceCrumbs>
+        <!-- <interfaceCrumbs :data="result.menu"></interfaceCrumbs> -->
+        <tabSwitching></tabSwitching>
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -19,7 +20,8 @@
 <script setup lang="ts">
 import menus from '@/components/menu/index.vue'
 import headerInformation from '@/components/headerInformation/index.vue'
-import interfaceCrumbs from '@/components/interfaceCrumbs/index.vue'
+// import interfaceCrumbs from '@/components/interfaceCrumbs/index.vue'
+import tabSwitching from '@/components/tabSwitching/index.vue'
 import request from '@/store/request'
 import { reactive, onMounted } from "vue";
 
@@ -37,6 +39,10 @@ onMounted(async () => {
 </script>
 
 <style lang="less" scoped>
+.header {
+  background-color: #409EFF;
+}
+
 .Aside {
   background-color: rgba(236, 236, 236);
 }

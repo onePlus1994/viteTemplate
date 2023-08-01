@@ -55,6 +55,7 @@ const outAccount = () => {
     background-position: center;
     height: 60px;
     width: 200px;
+    transform: scaleY(1.7);
 }
 
 .margStyle {

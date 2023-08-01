@@ -58,7 +58,7 @@ watch(() => router.currentRoute.value, (toPath) => {
   
 <style lang="less" scoped>
 .crumbsSty {
-    background-color: #409EFF;
+    background-color: yellowgreen;
     padding: 0 20px;
 }
 
