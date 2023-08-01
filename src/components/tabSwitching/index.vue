@@ -27,24 +27,39 @@ watch(() => router.currentRoute.value, (newValue: any) => {
     openTab.ary = store.state.openTab;
 }, { immediate: true })
 
+const numAry = computed(() => {
+    let objAry = []
+    openTab.ary.forEach((v, i) => {
+        objAry.push(v.route)
+    })
+    return objAry
+})
+
 const clickTab = ({ props } = e) => {
     router.push({ path: props.name });
 }
 const removeTab = (targetName) => {
+    let num = numAry.value.indexOf(targetName)
     //首页不删
-    if (targetName == '/') {
-        return
-    }
     store.commit('delete_tabs', targetName);
     if (openTab.activeIndex === targetName) {
         // 设置当前激活的路由
-        if (openTab && openTab.length >= 1) {
-            store.commit('set_active_index', openTab[openTab.length - 1].route);
+        let ary = openTab.ary
+        if (num > 1) {
+            store.commit('set_active_index', ary[num].route);
+            openTab.activeIndex = ary[num].route;
             router.push({ path: openTab.activeIndex });
         } else {
-            router.push({ path: '/homes' });
+            store.commit('set_active_index', ary[0].route);
+            openTab.activeIndex = ary[0].route;
+            router.push({ path: openTab.activeIndex });
         }
     }
+}
+
+const changeNum = (ary: any, key: any, value: any) => {
+    let num = 0
+
 }
 </script>
   
