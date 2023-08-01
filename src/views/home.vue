@@ -46,14 +46,13 @@ onMounted(async () => {
 // 当前路由不是首页时，添加首页以及另一页到store里，并设置激活状态
 // 当当前路由是首页时，添加首页到store，并设置激活状态
 if (route.path !== '/' && route.path !== '/homes') {
-  console.log(route, 'sss')
   store.commit('add_tabs', { route: '/homes', name: '首页' });
   store.commit('add_tabs', { route: route.path, name: route.name });
   store.commit('set_active_index', route.path);
 } else {
   store.commit('add_tabs', { route: '/homes', name: '首页' });
   store.commit('set_active_index', '/homes');
-  router.push('/');
+  router.push('/homes');
 }
 </script>
 

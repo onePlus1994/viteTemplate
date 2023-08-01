@@ -35,7 +35,6 @@ export default createStore({
     },
     // 设置当前激活的tab
     set_active_index(state: any, index: any) {
-      console.log(index)
       state.activeIndex = index;
     },
     // 清空路由

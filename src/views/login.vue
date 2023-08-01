@@ -8,10 +8,12 @@
                     <el-form :model="form" ref="ruleFormRef" :rules="rules">
                         <el-form-item prop="account">
                             <el-input v-model.trim="form.account" placeholder="账号" :prefix-icon="Stamp"
+                                @keydown.enter.native="logon(ruleFormRef)"
                                 onkeyup="value=value.replace(/[^\x00-\xff]/g, '')" />
                         </el-form-item>
                         <el-form-item prop="password">
                             <el-input v-model.trim="form.password" type="password" placeholder="密码" :prefix-icon="Key"
+                                @keydown.enter.native="logon(ruleFormRef)"
                                 onkeyup="value=value.replace(/[^\x00-\xff]/g, '')" />
                         </el-form-item>
                         <el-form-item>
