@@ -6,7 +6,9 @@
     </el-header>
     <el-container>
       <el-aside class="Aside">
-        <menus :data="result.menu"></menus>
+        <el-scrollbar>
+          <menus :data="result.menu"></menus>
+        </el-scrollbar>
       </el-aside>
       <el-main class="main">
         <!-- <interfaceCrumbs :data="result.menu"></interfaceCrumbs> -->
@@ -63,6 +65,7 @@ if (route.path !== '/' && route.path !== '/homes') {
 
 .Aside {
   background-color: rgba(236, 236, 236);
+  height: calc(100vh - 60px)
 }
 
 .main {
