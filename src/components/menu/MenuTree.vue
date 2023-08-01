@@ -47,4 +47,8 @@ const clickBack = (res) => {
 .iconSty {
   margin-left: 10px;
 }
+
+.el-menu-item.is-active {
+  background-color: #ffffff;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bodyMenu">
+  <div>
     <el-menu router :default-active="route.path">
       <template v-for="item in menuData">
         <menu-item :subMenu="item" />
@@ -46,11 +46,16 @@ const routerPush0 = (array: any) => {
 </script>
 
 <style lang="less" scoped>
-.bodyMenu {
-  padding: 0 10px;
-}
-
 ::v-deep(.el-menu) {
   border-right: none;
+  background-color: rgba(236, 236, 236);
+}
+
+::v-deep(.el-menu-item:hover) {
+  background-color: #ecf5ff;
+}
+
+::v-deep(.el-sub-menu__title:hover) {
+  background-color: #ecf5ff;
 }
 </style> 

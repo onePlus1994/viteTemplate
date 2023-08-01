@@ -38,9 +38,7 @@ onMounted(async () => {
 
 <style lang="less" scoped>
 .Aside {
-  // width: 200px;
-  // background-color: aqua;
-  border-right: 1px solid;
+  background-color: rgba(236, 236, 236);
 }
 
 .main {

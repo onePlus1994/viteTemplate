@@ -24,7 +24,7 @@
             },
             {
                 "title": "新建项目",
-                "route": "/home/secondPage2",
+                "route": "/home/secondPage21",
                 "code": "1-2"
             }
         ]
@@ -35,21 +35,14 @@
         "code": "2",
         "children": [
             {
-                "title": "Navigator two two",
+                "title": "我的工时",
                 "route": "/testtwo",
-                "code": "2-1",
-                "children": [
-                    {
-                        "title": "Navigator one",
-                        "route": "/testones12",
-                        "code": "2-1-1"
-                    },
-                    {
-                        "title": "Navigator four",
-                        "route": "/testfour41241",
-                        "code": "2-1-2"
-                    }
-                ]
+                "code": "2-1"
+            },
+            {
+                "title": "工时审批",
+                "route": "/testfour41241",
+                "code": "2-1-2"
             }
         ]
     },
@@ -60,12 +53,22 @@
         "icon": "Message",
         "children": [
             {
-                "title": "Navigator one",
+                "title": "部门工时执行情况",
                 "route": "/testones12",
                 "code": "2-1-1"
             },
             {
-                "title": "Navigator four",
+                "title": "部门工时异常情况",
+                "route": "/testfour41241",
+                "code": "2-1-2"
+            },
+            {
+                "title": "部门工时填报完成率",
+                "route": "/testfour41241",
+                "code": "2-1-2"
+            },
+            {
+                "title": "工时汇总统计率",
                 "route": "/testfour41241",
                 "code": "2-1-2"
             }
@@ -78,12 +81,54 @@
         "icon": "Message",
         "children": [
             {
-                "title": "Navigator one",
+                "title": "系统设置",
+                "route": "/testfour41241",
+                "code": "2-1-2",
+                "children": [
+                    {
+                        "title": "Navigator one",
+                        "route": "/testones12",
+                        "code": "2-1-1"
+                    },
+                    {
+                        "title": "Navigator four",
+                        "route": "/testfour41241",
+                        "code": "2-1-2"
+                    }
+                ]
+            },
+            {
+                "title": "定时任务",
+                "route": "/testfour41241",
+                "code": "2-1-2"
+            },
+            {
+                "title": "公司",
                 "route": "/testones12",
                 "code": "2-1-1"
             },
             {
-                "title": "Navigator four",
+                "title": "部门",
+                "route": "/testfour41241",
+                "code": "2-1-2"
+            },
+            {
+                "title": "人员",
+                "route": "/testfour41241",
+                "code": "2-1-2"
+            },
+            {
+                "title": "角色",
+                "route": "/testfour41241",
+                "code": "2-1-2"
+            },
+            {
+                "title": "账户",
+                "route": "/testfour41241",
+                "code": "2-1-2"
+            },
+            {
+                "title": "密码重置",
                 "route": "/testfour41241",
                 "code": "2-1-2"
             }
