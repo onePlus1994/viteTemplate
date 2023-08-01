@@ -1,5 +1,5 @@
 import { Base64 } from "js-base64"
-export const convertData = (obj) => {
+export const convertData = (obj: any) => {
   let data = JSON.parse(JSON.stringify(obj))
   return data
 }

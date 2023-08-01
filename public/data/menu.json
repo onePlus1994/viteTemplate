@@ -1,69 +1,92 @@
 [
     {
-        "title": "首页",
+        "title": "项目管理",
         "icon": "Clock",
         "code": "1",
         "route": "/home",
         "children": [
             {
-                "title": "二级menu",
+                "title": "我的项目",
                 "route": "/homess/secondPage1da",
                 "code": "1-1",
-                "icon": "Setting",
                 "children": [
                     {
                         "title": "二级页面1",
                         "route": "/home/secondPage1",
-                        "code": "1-1",
-                        "icon": "Setting"
+                        "code": "1-1"
                     }
                 ]
             },
             {
-                "title": "二级页面2",
+                "title": "项目监控",
                 "route": "/home/secondPage2",
-                "code": "1-2",
-                "icon": "Setting"
+                "code": "1-2"
+            },
+            {
+                "title": "新建项目",
+                "route": "/home/secondPage2",
+                "code": "1-2"
             }
         ]
     },
     {
-        "title": "Navigator two",
+        "title": "工时管理",
         "icon": "Message",
         "code": "2",
         "children": [
             {
                 "title": "Navigator two two",
                 "route": "/testtwo",
-                "icon": "Setting",
                 "code": "2-1",
                 "children": [
                     {
                         "title": "Navigator one",
                         "route": "/testones12",
-                        "code": "2-1-1",
-                        "icon": "Setting"
+                        "code": "2-1-1"
                     },
                     {
                         "title": "Navigator four",
                         "route": "/testfour41241",
-                        "code": "2-1-2",
-                        "icon": "Setting"
+                        "code": "2-1-2"
                     }
                 ]
             }
         ]
     },
     {
-        "title": "Navigator three",
+        "title": "统计分析",
         "route": "/testthree",
         "code": "3",
-        "icon": "Message"
+        "icon": "Message",
+        "children": [
+            {
+                "title": "Navigator one",
+                "route": "/testones12",
+                "code": "2-1-1"
+            },
+            {
+                "title": "Navigator four",
+                "route": "/testfour41241",
+                "code": "2-1-2"
+            }
+        ]
     },
     {
-        "title": "Navigator five",
+        "title": "系统管理",
         "code": "4",
         "route": "/testfive",
-        "icon": "Message"
+        "icon": "Message",
+        "children": [
+            {
+                "title": "Navigator one",
+                "route": "/testones12",
+                "code": "2-1-1"
+            },
+            {
+                "title": "Navigator four",
+                "route": "/testfour41241",
+                "code": "2-1-2"
+            }
+        ]
     }
 ]

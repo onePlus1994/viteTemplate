@@ -3,10 +3,10 @@
     <!-- 设置判断条件，如果存在子级且有值 -->
     <el-sub-menu v-if="subMenu.children && '0' in subMenu.children" :index="subMenu.code">
       <template #title>
-        <el-icon>
+        <el-icon v-if="subMenu.icon">
           <component :is="subMenu.icon" />
         </el-icon>
-        <span>{{ subMenu.title }}</span>
+        <span :class="[subMenu.icon ? '' : 'iconSty']">{{ subMenu.title }}</span>
       </template>
       <!-- 重点：循环调用自己 -->
       <template v-for="(item, i) in subMenu.children" :key="item.code + i">
@@ -17,10 +17,10 @@
     <!-- 设置终止条件，如果没有子级，就不在调用自己 -->
     <el-menu-item v-else :index="subMenu.route" @click="clickBack(subMenu.route)">
       <template #title>
-        <el-icon>
+        <el-icon v-if="subMenu.icon">
           <component :is="subMenu.icon" />
         </el-icon>
-        <span>{{ subMenu.title }}</span>
+        <span :class="[subMenu.icon ? '' : 'iconSty']">{{ subMenu.title }}</span>
       </template>
     </el-menu-item>
   </div>
@@ -43,4 +43,8 @@ const clickBack = (res) => {
   // emits('clickBack', res)
 }
 </script>
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.iconSty {
+  margin-left: 10px;
+}
+</style>
