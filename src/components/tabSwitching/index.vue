@@ -63,9 +63,5 @@ const changeNum = (ary: any, key: any, value: any) => {
 }
 </script>
   
-<style lang="less" scoped>
-::v-deep(.is-icon-close) {
-    width: 0
-}
-</style> 
+<style lang="less" scoped></style> 
   
