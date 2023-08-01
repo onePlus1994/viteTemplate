@@ -1,33 +1,50 @@
 <template>
-    <div>
-        <el-tabs v-model="activeIndex" type="card" v-if="tabPane.length" @tab-click="clickTab" @tab-remove="removeTab">
-            <el-tab-pane v-for="(item, index) in tabPane" :key="item.path" :label="item.name"
-                :name="item.path"></el-tab-pane>
-        </el-tabs>
-    </div>
+    <el-tabs v-model="activeIndex" type="card" class="demo-tabs" @tab-click="clickTab" @tab-remove="removeTab">
+        <el-tab-pane v-for="(item, index) in openTab.ary" :key="item.route" :closable="index != 0" :label="item.name"
+            :name="item.route"></el-tab-pane>
+    </el-tabs>
 </template>
   
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { ref, reactive, computed, watch } from 'vue';
+import { useStore } from "vuex";
 
-var activeIndex = ref();
-var tabPane = reactive([]);
 const router = new useRouter();
+const store = useStore();
+var activeIndex = ref(store.state.activeIndex);
+var openTab = reactive({
+    ary: [] as any[]
+});
 
 watch(() => router.currentRoute.value, (newValue: any) => {
-    console.log(newValue, 'dd')
+    //判断路由是否已经打开
+    //已经打开的 ，将其置为active
+    //未打开的，将其放入队列里
+    store.commit('add_tabs', { route: newValue.path, name: newValue.name });
+    store.commit('set_active_index', newValue.path);
+    activeIndex = store.state.activeIndex;
+    openTab.ary = store.state.openTab;
 }, { immediate: true })
 
 const clickTab = ({ props } = e) => {
-
+    router.push({ path: props.route });
 }
 const removeTab = (targetName) => {
-
-}
-const assignment = (value) => {
-    router.push(value)
-    activeIndex = value
+    //首页不删
+    if (targetName == '/') {
+        return
+    }
+    store.commit('delete_tabs', targetName);
+    if (activeIndex.value === targetName) {
+        // 设置当前激活的路由
+        if (openTab && openTab.length >= 1) {
+            store.commit('set_active_index', openTab[openTab.length - 1].route);
+            router.push({ path: activeIndex.value });
+        } else {
+            router.push({ path: '/' });
+        }
+    }
 }
 
 </script>

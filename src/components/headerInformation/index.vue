@@ -7,7 +7,7 @@
                 <el-avatar shape="circle" :size="40" src="src/assets/image/head.png" @click="showClick" />
                 <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item>Action 1</el-dropdown-item>
+                        <el-dropdown-item @click="ssss">Action 1</el-dropdown-item>
                         <el-dropdown-item>Action 2</el-dropdown-item>
                         <el-dropdown-item>Action 3</el-dropdown-item>
                         <el-dropdown-item disabled>Action 4</el-dropdown-item>
@@ -21,8 +21,10 @@
   
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { useStore } from "vuex";
 import { ref } from 'vue'
 
+const store = useStore();
 const router = useRouter();
 
 const dropdown1 = ref()
@@ -31,7 +33,11 @@ const showClick = () => {
     dropdown1.value.handleOpen()
 }
 
+const ssss = () => {
+    store.commit('clear_tabs');
+}
 const outAccount = () => {
+    store.commit('clear_tabs');
     let sessionData = JSON.parse(window.sessionStorage.getItem("user"))
     if (sessionData) {
         sessionData.auth = false

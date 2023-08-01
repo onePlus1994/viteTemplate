@@ -15,6 +15,11 @@ const routes: Array<RouteRecordRaw> = [
         component: Layout,
         children: [
             {
+                path: '/homes',
+                name: '首页',
+                component: secondPage1
+            },
+            {
                 path: '/home/secondPage1',
                 name: '我的项目',
                 component: secondPage1
