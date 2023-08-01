@@ -45,7 +45,7 @@ const removeTab = (targetName) => {
     if (openTab.activeIndex === targetName) {
         // 设置当前激活的路由
         let ary = openTab.ary
-        if (num > 1) {
+        if (ary && ary.length > 1) {
             store.commit('set_active_index', ary[num].route);
             openTab.activeIndex = ary[num].route;
             router.push({ path: openTab.activeIndex });
