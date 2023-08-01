@@ -39,7 +39,6 @@ const removeTab = (targetName) => {
     if (openTab.activeIndex === targetName) {
         // 设置当前激活的路由
         if (openTab && openTab.length >= 1) {
-            console.log(openTab[openTab.length - 1].route, 'ss')
             store.commit('set_active_index', openTab[openTab.length - 1].route);
             router.push({ path: openTab.activeIndex });
         } else {
