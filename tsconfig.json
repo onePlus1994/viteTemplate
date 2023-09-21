@@ -6,7 +6,7 @@
     "lib": [
       "ES2020",
       "DOM",
-      "DOM.Iterable"
+      "DOM.Iterable" //新增的项
     ],
     "skipLibCheck": true,
     /* Bundler mode */
@@ -26,11 +26,11 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "vuex": [
+        "./node_modules/vuex/types"
       ]
-    },
-    "lib": [
-      "DOM.Iterable" //新增的项
-    ]
+    }
   },
   "exclude": [
     "node_modules",
