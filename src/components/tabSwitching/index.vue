@@ -7,10 +7,10 @@
   
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { toRef, reactive, computed, watch } from 'vue';
+import { reactive, computed, watch } from 'vue';
 import { useStore } from "vuex";
 
-const router = new useRouter();
+const router = useRouter();
 const store = useStore();
 var openTab = reactive({
     ary: [] as any[],
@@ -28,17 +28,17 @@ watch(() => router.currentRoute.value, (newValue: any) => {
 }, { immediate: true })
 
 const numAry = computed(() => {
-    let objAry = []
-    openTab.ary.forEach((v, i) => {
+    let objAry = [] as any
+    openTab.ary.forEach((v) => {
         objAry.push(v.route)
     })
     return objAry
 })
 
-const clickTab = ({ props } = e) => {
+const clickTab = (props: any) => {
     router.push({ path: props.name });
 }
-const removeTab = (targetName) => {
+const removeTab = (targetName: any) => {
     let num = numAry.value.indexOf(targetName)
     //首页不删
     store.commit('delete_tabs', targetName);
@@ -48,18 +48,13 @@ const removeTab = (targetName) => {
         if (ary && ary.length > 1) {
             store.commit('set_active_index', ary[num].route);
             openTab.activeIndex = ary[num].route;
-            router.push({ path: openTab.activeIndex });
+            router.push({ path: openTab.activeIndex || '' });
         } else {
             store.commit('set_active_index', ary[0].route);
             openTab.activeIndex = ary[0].route;
-            router.push({ path: openTab.activeIndex });
+            router.push({ path: openTab.activeIndex || '' });
         }
     }
-}
-
-const changeNum = (ary: any, key: any, value: any) => {
-    let num = 0
-
 }
 </script>
   
