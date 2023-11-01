@@ -36,18 +36,17 @@ const numAry = computed(() => {
 })
 
 const clickTab = (props: any) => {
-    router.push({ path: props.name });
+    router.push({ path: props.props.name });
 }
 const removeTab = (targetName: any) => {
-    let num = numAry.value.indexOf(targetName)
     //首页不删
-    store.commit('delete_tabs', targetName);
     if (openTab.activeIndex === targetName) {
+        let num = numAry.value.indexOf(targetName)
         // 设置当前激活的路由
         let ary = openTab.ary
         if (ary && ary.length > 1) {
-            store.commit('set_active_index', ary[num].route);
-            openTab.activeIndex = ary[num].route;
+            store.commit('set_active_index', ary[num - 1].route);
+            openTab.activeIndex = ary[num - 1].route;
             router.push({ path: openTab.activeIndex || '' });
         } else {
             store.commit('set_active_index', ary[0].route);
@@ -55,6 +54,7 @@ const removeTab = (targetName: any) => {
             router.push({ path: openTab.activeIndex || '' });
         }
     }
+    store.commit('delete_tabs', targetName);
 }
 </script>
   

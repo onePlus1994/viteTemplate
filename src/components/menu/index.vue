@@ -13,6 +13,7 @@ import { convertData } from "@/components/until/until";
 import MenuItem from "./MenuTree.vue";
 import { toRefs, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router'
+import store from "@/store";
 // 在接收时候也得注意，vue3 props接收必须规定数据类型，如果父元素数据类型出错，那么会报错
 const props = defineProps({ data: Object });
 
@@ -39,6 +40,7 @@ const routerPush0 = (array: any) => {
   } else {
     if (convertData(routeData.ary).indexOf(route.path) >= 0) {
       router.push(data[0].route)
+      store.commit('add_tabs', data[0].route)
     }
   }
 }
