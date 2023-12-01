@@ -1,7 +1,9 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/views/home.vue'
-import secondPage1 from '@/views/secondaryPage/secondaryExample.vue'
+import homePage from '@/views/secondaryPage/secondaryExample.vue'
+import secondPage1 from '@/views/secondaryPage/secondExample1.vue'
 import secondPage2 from '@/views/secondaryPage/secondExample2.vue'
+import secondPage3 from '@/views/secondaryPage/secondExample3.vue'
 import errorPage from '@/views/errorPage.vue'
 import login from '@/views/login.vue'
 const routes: Array<RouteRecordRaw> = [
@@ -17,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: '/homes',
                 name: '首页',
-                component: secondPage1
+                component: homePage
             },
             {
                 path: '/home/secondPage1',
@@ -32,7 +34,7 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: '/home/secondPage3',
                 name: '新建项目',
-                component: secondPage2
+                component: secondPage3
             }
         ]
     },
