@@ -1,22 +1,25 @@
 
 <template>
     <div>
+        <div>
+            <containerView :text="arcText.text"></containerView>
+        </div>
         <div class="tetleStyle">
             <homePageEchars :width="titObj.width" :height="titObj.height"></homePageEchars>
             <homePageEchars1 :width="titObj.width" :height="titObj.height"></homePageEchars1>
         </div>
-        <div>
-            <arcTextView></arcTextView>
-            <el-slider v-model="value1" class="slider" />
-        </div>
+
     </div>
 </template>
   
 <script setup lang="ts">
 import homePageEchars from '../../components/echarts/homePage.vue'
 import homePageEchars1 from '../../components/echarts/homePage2.vue'
-import arcTextView from '../../components/assembly/arcText.vue'
+import containerView from '../../components/assembly/container.vue'
 import { reactive, ref } from 'vue'
+const arcText = reactive({
+    text: "首页可视化列表与动效组件展示",
+})
 const titObj = reactive({
     height: 600,
     width: 1000,
