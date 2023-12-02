@@ -10,7 +10,7 @@
         </div>
         <div>
             <arcTextView :data="arcText"></arcTextView>
-            <el-slider v-model="value1" />
+            <el-slider v-model="value1" class="slider" @change="sliderChange" />
         </div>
     </div>
 </template>
@@ -31,6 +31,10 @@ const titObj = reactive({
     width: 1000,
 })
 const value1 = ref(60)
+const sliderChange = (value1) => {
+    arcText.radius = 360 / value1
+    console.log(value1)
+}
 </script>
   
 <style lang="less" scoped>
@@ -41,6 +45,7 @@ const value1 = ref(60)
 }
 
 .slider {
+    margin-top: 150px;
     width: 200px;
 }
 </style>
